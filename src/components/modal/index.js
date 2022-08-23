@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor:'#fff',
     borderRadius: 4,
-    padding:20,
+    padding:12,
+    boxSizing:'borderBox',
     height:'auto',
     width:'80%',
     shadowColor:'#000',

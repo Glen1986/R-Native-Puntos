@@ -5,7 +5,7 @@ export default ({title, ...rest}) => {
   return(
     <View style={styles.wrapper}>
      <Text>{title}</Text>
-     <TextInput{...rest}/>
+     <TextInput style={styles.input}{...rest}/>
     </View>
   )
 }
@@ -13,5 +13,11 @@ export default ({title, ...rest}) => {
 const styles = StyleSheet.create({
   wrapper: {
     height: 40,
+    padding:8,
+    marginBottom:4,
+  },
+  input:{
+    paddingTop:4,
+    paddingBottom:4,
   }
 })

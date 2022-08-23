@@ -76,7 +76,8 @@ export default function App() {
           :
           <List 
             puntos={puntos} 
-            setVisibility={setVisibility}
+            // setVisibility={setVisibility}
+            closeModal={()=> setVisibility(false)}
           />}
       </Modal>
     </View>
