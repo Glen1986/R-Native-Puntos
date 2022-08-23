@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { Map, Modal, Panel, Input } from './src/components'
 
 export default function App() {
@@ -18,6 +18,14 @@ export default function App() {
   const handleChangeText = (text) =>{
     setNombre(text)
   }
+  const handleSubmit = () => {
+    const newPunto = { coordinate: puntoTemp, name: nombre };
+    setPuntos(puntos.concat(newPunto))
+    setVisibility(false)
+    setNombre('')
+  };
+  console.log(puntos);
+
   return (
     <View style={styles.container}>
       <Map onLongPress = { handleLongPress }/>
@@ -27,6 +35,9 @@ export default function App() {
           title = 'Nombre' 
           placeholder = 'Lugar'
           onChangeText = {handleChangeText}
+        />
+      <Button title='aceptar'
+        onPress={handleSubmit}
         />
       </Modal>
     </View>
