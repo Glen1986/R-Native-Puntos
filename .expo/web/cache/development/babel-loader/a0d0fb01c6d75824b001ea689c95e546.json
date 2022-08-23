@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as map } from \"./map\";","map":{"version":3,"names":["default","map"],"sources":["/Users/glene.martinez/Documents/holamundo/Puntos/src/components/index.js"],"sourcesContent":["export {default as map} from './map'\n"],"mappings":"AAAA,SAAQA,OAAO,IAAIC,GAAnB"},"metadata":{},"sourceType":"module"}
