@@ -20,16 +20,26 @@ export default function App() {
   const handleChangeText = (text) =>{
     setNombre(text)
   }
+  // {nombre.length < 1 ?
+  // console.log('menor')
+  // :
+  // console.log('mayor');
+  // }
   const handleSubmit = () => {
-          console.log(nombre.length)
-      const newPunto = { coordinate: puntoTemp, name: nombre };
-      setPuntos(puntos.concat(newPunto))
-      setVisibility(false)
-      setNombre('')
-      };
+    // console.log(nombre.length)
+
+    const newPunto = { coordinate: puntoTemp, name: nombre };
+    setPuntos(puntos.concat(newPunto))
+    setVisibility(false)
+    setNombre('')
+  };
+
   const handleLista = () => {
     setFilterVisibility('all_puntos')
     setVisibility(true)
+  }
+  const next = () => {
+    alert('Debe Escribir el nombre del lugar Seleccionado')
   }
 
   return (
@@ -41,20 +51,33 @@ export default function App() {
       >
         {filterVisibility === 'new_punto' ?
           <>
-        <Input 
-          title = 'Nombre' 
-          placeholder = 'Lugar'
-          onChangeText = {handleChangeText}
-        />
-      <Button title='aceptar'
-        onPress={handleSubmit}
-        />
+            <Input 
+              title = 'Nombre' 
+              placeholder = 'Lugar'
+              onChangeText = {handleChangeText}
+            />
+            {nombre.length < 1 ? 
+              <Button title='Escriba Nombre'
+                onPress={next}
+              />
+              :
+              <View>
+                <Button title='Aceptar'
+                  onPress={handleSubmit}
+                />
+                <Button title='Cancelar'
+                  onPress={handleSubmit}
+                />
+              </View>
+            }
+
+
           </>
           :
           <List 
             puntos={puntos} 
             setVisibility={setVisibility}
-        />}
+          />}
       </Modal>
     </View>
   );
