@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native';
-import { Map, Modal, Panel, Input } from './src/components'
+import { StyleSheet, View, Button } from 'react-native';
+import { Map, Modal, Panel, List, Input } from './src/components'
 
 export default function App() {
   const [puntos, setPuntos] = useState([])
@@ -10,8 +10,8 @@ export default function App() {
   const [filterVisibility, setFilterVisibility] = useState('new_punto')
 
   const handleLongPress = ({nativeEvent}) => {
-    // const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate })
-    // setPuntos(newPuntos)
+    const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate })
+    setPuntos(newPuntos)
     setFilterVisibility('new_punto')
     setPuntoTemp(nativeEvent.coordinate)
     setVisibility(true)
@@ -21,22 +21,24 @@ export default function App() {
     setNombre(text)
   }
   const handleSubmit = () => {
-    const newPunto = { coordinate: puntoTemp, name: nombre };
-    setPuntos(puntos.concat(newPunto))
-    setVisibility(false)
-    setNombre('')
-  };
+          console.log(nombre.length)
+      const newPunto = { coordinate: puntoTemp, name: nombre };
+      setPuntos(puntos.concat(newPunto))
+      setVisibility(false)
+      setNombre('')
+      };
   const handleLista = () => {
     setFilterVisibility('all_puntos')
     setVisibility(true)
   }
-  console.log(puntos);
 
   return (
     <View style={styles.container}>
       <Map onLongPress = { handleLongPress }/>
-      <Panel onPressLeft={ handleLista } textLeft='Lista'/>
-      <Modal visibility={visibility}>
+      <Panel setVisibility={setVisibility} onPressLeft={ handleLista } textLeft='Lista'/>
+      <Modal 
+        visibility={visibility}
+      >
         {filterVisibility === 'new_punto' ?
           <>
         <Input 
@@ -49,7 +51,10 @@ export default function App() {
         />
           </>
           :
-          <Text>lele</Text>}
+          <List 
+            puntos={puntos} 
+            setVisibility={setVisibility}
+        />}
       </Modal>
     </View>
   );
