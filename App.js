@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Map onLongPress = { handleLongPress }/>
+      <Map onLongPress = { handleLongPress } puntos={puntos}/>
       <Panel setVisibility={setVisibility} onPressLeft={ handleLista } textLeft='Lista'/>
       <Modal 
         visibility={visibility}
