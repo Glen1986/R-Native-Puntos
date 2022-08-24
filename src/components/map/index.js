@@ -2,13 +2,13 @@ import React from 'react';
 import MapView, {Marker} from "react-native-maps";
 import {StyleSheet, Dimensions} from 'react-native';
 
-export default ({onLongPress, puntos}) => {
+export default ({onLongPress, puntos, filterPoints}) => {
   return(
     <MapView 
       style={styles.map}
       onLongPress={onLongPress}
     >
-      {puntos.map(x =>
+      {filterPoints && puntos.map(x =>
       <Marker
         key={x.name}
         coordinate={x.coordinate}
